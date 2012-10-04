@@ -1,49 +1,28 @@
-======================
-Cache Debug Toolbar
-======================
+==================
+Django Cache Panel
+==================
 
-The Cache Debug Toolbar is an add-on for Django Debug Toolbar for tracking
-cache usage. It currently supports the ``redis``, ``pylibmc`` and ``memcache`` libraries.
+The Django Cache Panel is an add-on for the Django Debug Toolbar to track cache
+usage. It is a fork of the `Cache Debug Toolbar <https://github.com/WoLpH/Cache-Debug-Toolbar>`_
+project by Rick van Hattem, which is where the statistics tracking at the core
+of this project come from. The generic cache wrapper is modified from the
+`django-debug-cache-panel <https://github.com/jbalogh/django-debug-cache-panel>`_
+project by Jeff Balogh.
 
-This is definitely beta software, but I've found it useful in work and personal
-projects. Feedback welcome, patches appreciated. - Ross McFarland
+What's Changed?
+===============
+
+The project has been modified to be more generic, capturing only the functions
+found in the BaseCache so that it should be compatible with more cache
+backends. The way the statistics are captured and the presentation of the
+statistics has also been modified to be more similar to the SQL panel. The
+requirement for the panel to be imported in settings has been removed.
 
 Installation
 ============
 
 #. Install and configure `Django Debug Toolbar <https://github.com/django-debug-toolbar/django-debug-toolbar>`_.
 
-#. Add the ``cache_toolbar`` app to your ``INSTALLED_APPS``.
+#. Add ``cache_panel`` app to your ``INSTALLED_APPS``.
 
-#. Import the panel corresponding to the library you're using.
-
-   The following must be imported in your ``settings.py`` file so that it has a
-   chance to replace the caching library with one capable of tracking. You'll
-   probably want to import it in ``local_settings.py`` (if you use the pattern) or
-   at least wrap the import line in ``if DEBUG``:
-
-   For ``redis``::
-
-	import cache_toolbar.panels.redis
-
-   For ``memcache``::
-
-	import cache_toolbar.panels.memcache
-
-   For ``pylibmc``::
-
-	import cache_toolbar.panels.pylibmc
-
-Configuration
-=============
-
-#. Add the ``cache`` panel to ``DEBUG_TOOLBAR_PANELS``.
-
-   You'll need to add the panel corresponding to the library you'll be using to
-   the list of debug toolbar's panels in the order in which you'd like it to
-   appear::
-
-	DEBUG_TOOLBAR_PANELS = (
-            ...
-	    'memcache_toolbar.panels.BasePanel',
-	)
+#. Add ``cache_panel.panel.CacheDebugPanel`` to ``DEBUG_TOOLBAR_PANELS``.

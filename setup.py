@@ -3,14 +3,14 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='cache_toolbar',
-    version='1.0.0',
+    name='cache_panel',
+    version='0.1',
     description='',
-    author='Rick van Hattem',
-    author_email='Rick.van.Hattem@Fawo.nl',
-    url='http://github.com/WoLpH/cache-debug-panel',
+    author='Brandon Konkle',
+    author_email='brandon@lincolnloop.com',
+    url='http://github.com/lincolnloop/django-cache-panel',
     packages=find_packages(exclude=('examples', 'examples.demo', 'test')),
-    provides=['cache_toolbar'],
+    provides=['cache_panel'],
     requires=['Django', 'debug_toolbar'],
     include_package_data=True,
     zip_safe=False,

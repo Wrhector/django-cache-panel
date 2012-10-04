@@ -1,1 +1,1 @@
-recursive-include cache_toolbar/templates *
+recursive-include cache_panel/templates *recursive-include cache_panel/static *
