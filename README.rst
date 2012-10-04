@@ -23,6 +23,10 @@ requirement for the panel to be imported in settings has been removed.
 Installation
 ============
 
-#. Install and configure `Django Debug Toolbar <https://github.com/django-debug-toolbar/django-debug-toolbar>`_.
+#. `Install and configure <https://github.com/django-debug-toolbar/django-debug-toolbar#installation>`_ `Django Debug Toolbar <https://github.com/django-debug-toolbar/django-debug-toolbar>`_.
+#. Install django-cache-panel:
+
+    pip install -e git+https://github.com/lincolnloop/django-cache-panel.git#egg=django-cache-panel
+
 #. Add ``cache_panel`` app to your ``INSTALLED_APPS``.
 #. Add ``cache_panel.panel.CacheDebugPanel`` to ``DEBUG_TOOLBAR_PANELS``.
