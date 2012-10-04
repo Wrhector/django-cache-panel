@@ -2,10 +2,18 @@
 
 from setuptools import setup, find_packages
 
+VERSION = __import__('cache_panel').__version__
+
+try:
+    long_description = open('README.rst', 'rt').read()
+except IOError:
+    long_description = ''
+
 setup(
     name='django-cache-panel',
-    version='0.1',
+    version=VERSION,
     description='A more detailed cache panel for the Django Debug Toolbar',
+    long_description=long_description,
     author='Brandon Konkle',
     author_email='brandon@lincolnloop.com',
     url='http://github.com/lincolnloop/django-cache-panel',
