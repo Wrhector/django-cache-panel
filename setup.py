@@ -3,13 +3,13 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='cache_panel',
+    name='django-cache-panel',
     version='0.1',
-    description='',
+    description='A more detailed cache panel for the Django Debug Toolbar',
     author='Brandon Konkle',
     author_email='brandon@lincolnloop.com',
     url='http://github.com/lincolnloop/django-cache-panel',
-    packages=find_packages(exclude=('examples', 'examples.demo', 'test')),
+    packages=find_packages(),
     provides=['cache_panel'],
     requires=['Django', 'debug_toolbar'],
     include_package_data=True,

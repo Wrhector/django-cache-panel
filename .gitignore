@@ -1,4 +1,5 @@
 build/
 env/
+dist/
 *.egg-info
 *.pyc

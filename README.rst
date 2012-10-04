@@ -11,6 +11,10 @@ of this project come from. The generic cache wrapper is modified from the
 `django-debug-cache-panel <https://github.com/jbalogh/django-debug-cache-panel>`_
 project by Jeff Balogh.
 
+It's been tested with Django 1.4 and Django Debug Toolbar 0.9.4 using the
+python-memcached backend. If you've tried it out with other configurations,
+please let me know!
+
 What's Changed?
 ===============
 
@@ -23,10 +27,7 @@ requirement for the panel to be imported in settings has been removed.
 Installation
 ============
 
-#. `Install and configure <https://github.com/django-debug-toolbar/django-debug-toolbar#installation>`_ `Django Debug Toolbar <https://github.com/django-debug-toolbar/django-debug-toolbar>`_.
-#. Install django-cache-panel:
-
-    pip install -e git+https://github.com/lincolnloop/django-cache-panel.git#egg=django-cache-panel
-
+#. Install and configure `Django Debug Toolbar <https://github.com/django-debug-toolbar/django-debug-toolbar>`_.
+#. ``pip install django-cache-panel``
 #. Add ``cache_panel`` app to your ``INSTALLED_APPS``.
 #. Add ``cache_panel.panel.CacheDebugPanel`` to ``DEBUG_TOOLBAR_PANELS``.
