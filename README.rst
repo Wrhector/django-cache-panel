@@ -7,7 +7,7 @@ Django Cache Panel
 The Django Cache Panel is an add-on for the Django Debug Toolbar to track cache
 usage. It is a fork of the `Cache Debug Toolbar <https://github.com/WoLpH/Cache-Debug-Toolbar>`_
 project by Rick van Hattem, which is where the statistics tracking at the core
-of this project come from. The generic cache wrapper is modified from the
+of this project comes from. The generic cache wrapper is modified from the
 `django-debug-cache-panel <https://github.com/jbalogh/django-debug-cache-panel>`_
 project by Jeff Balogh.
 
