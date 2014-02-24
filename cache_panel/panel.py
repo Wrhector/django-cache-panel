@@ -115,7 +115,7 @@ def record(func):
                 + (dur.microseconds / 1000.0))
             if func.__name__.startswith('get'):
                 default = kwargs.get('default')
-                if value is None or value == default:
+                if value is None or (default is not None and value == default):
                     call['miss'] = 1
                 else:
                     call['hit'] = 1
