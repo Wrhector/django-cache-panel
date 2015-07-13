@@ -1,4 +1,4 @@
-import cPickle as pickle
+import pickle as pickle
 from datetime import datetime
 import functools
 import logging
@@ -60,7 +60,7 @@ def repr_value(ret):
             out, = ret
         else:
             out = ret
-    except Exception, e:
+    except Exception as e:
         try:
             out = 'Unable to parse: %r because: %r' % (ret, e)
         except:
@@ -78,9 +78,9 @@ def repr_value(ret):
 def render_stacktrace(trace):
     stacktrace = []
     for frame in trace:
-        params = map(escape, frame[0].rsplit(os.path.sep, 1) + list(frame[1:]))
+        params = list(map(escape, frame[0].rsplit(os.path.sep, 1) + list(frame[1:])))
         try:
-            stacktrace.append(u'<span class="path">{0}/</span><span class="file">{1}</span> in <span class="func">{3}</span>(<span class="lineno">{2}</span>)\n  <span class="code">{4}</span>'.format(*params))
+            stacktrace.append('<span class="path">{0}/</span><span class="file">{1}</span> in <span class="func">{3}</span>(<span class="lineno">{2}</span>)\n  <span class="code">{4}</span>'.format(*params))
         except IndexError:
             # This frame doesn't have the expected format, so skip it and move on to the next one
             continue
@@ -99,7 +99,7 @@ def record(func):
         _get_calls().append(call)
 
         if isinstance(key, dict):
-            call['key'] = key.keys()
+            call['key'] = list(key.keys())
         else:
             call['key'] = key
 
@@ -198,7 +198,7 @@ class CacheWrapper(object):
 
         # Define fallback function if backend doesn't implement some method.
         def not_implemented(*args, **kwargs):
-            raise NotImplementedError, "No such method in backend"
+            raise NotImplementedError("No such method in backend")
 
         # Store copies of the true methods.
         self.real_methods = dict(
