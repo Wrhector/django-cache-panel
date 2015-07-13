@@ -194,10 +194,15 @@ class CacheWrapper(object):
     def __init__(self, cache):
         # These are the methods we're going to replace.
         methods = ['add', 'get', 'set', 'delete', 'get_many', 'set_many',
-                   'delete_many', 'incr', 'decr', 'has_key']
+                   'delete_many', 'incr', 'decr', 'has_key', 'clear']
+
+        # Define fallback function if backend doesn't implement some method.
+        def not_implemented(*args, **kwargs):
+            raise NotImplementedError, "No such method in backend"
 
         # Store copies of the true methods.
-        self.real_methods = dict((m, getattr(cache, m)) for m in methods)
+        self.real_methods = dict(
+            (m, getattr(cache, m, not_implemented)) for m in methods)
 
         # Hijack the cache object.
         for method in methods:
@@ -242,6 +247,9 @@ class CacheWrapper(object):
     @record
     def has_key(self, *args, **kwargs):
         return self.real_methods['has_key'](*args, **kwargs)
+
+    def clear(self):
+        return self.real_methods['clear']()
 
 
 if not isinstance(cache.cache, CacheWrapper):
